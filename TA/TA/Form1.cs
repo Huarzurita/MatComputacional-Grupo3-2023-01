@@ -111,7 +111,7 @@ namespace TA
             int x = 0; int y = 0;
             Color rColor = new Color();
 
-            for (x = 0; x < original.Height; x++)
+            for (x = 0; x < original.Width; x++)
             {
                 for (y = 0; y < original.Height; y++)
                 {

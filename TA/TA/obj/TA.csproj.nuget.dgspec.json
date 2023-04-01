@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\UPC\\CICLO 5\\Matematica Computacional\\TA\\TA\\TA.csproj": {}
+    "D:\\UPC\\CICLO 5\\Matematica Computacional\\MatComputacional-Grupo3-2023-01\\TA\\TA\\TA.csproj": {}
   },
   "projects": {
-    "D:\\UPC\\CICLO 5\\Matematica Computacional\\TA\\TA\\TA.csproj": {
+    "D:\\UPC\\CICLO 5\\Matematica Computacional\\MatComputacional-Grupo3-2023-01\\TA\\TA\\TA.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\UPC\\CICLO 5\\Matematica Computacional\\TA\\TA\\TA.csproj",
+        "projectUniqueName": "D:\\UPC\\CICLO 5\\Matematica Computacional\\MatComputacional-Grupo3-2023-01\\TA\\TA\\TA.csproj",
         "projectName": "TA",
-        "projectPath": "D:\\UPC\\CICLO 5\\Matematica Computacional\\TA\\TA\\TA.csproj",
+        "projectPath": "D:\\UPC\\CICLO 5\\Matematica Computacional\\MatComputacional-Grupo3-2023-01\\TA\\TA\\TA.csproj",
         "packagesPath": "C:\\Users\\migue\\.nuget\\packages\\",
-        "outputPath": "D:\\UPC\\CICLO 5\\Matematica Computacional\\TA\\TA\\obj\\",
+        "outputPath": "D:\\UPC\\CICLO 5\\Matematica Computacional\\MatComputacional-Grupo3-2023-01\\TA\\TA\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
