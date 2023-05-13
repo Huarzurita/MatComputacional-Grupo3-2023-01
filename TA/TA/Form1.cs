@@ -33,6 +33,7 @@ namespace TA
         {
             int minValue = 255;
             int maxValue = 0;
+           
             for (int i = 0; i < original.Width; i++)
             {
                 for (int j = 0; j < original.Height; j++)
@@ -49,12 +50,17 @@ namespace TA
                 }
             }
 
+            resultante = new Bitmap(original.Width, original.Height);
+            double pendiente = 255 / (maxValue - minValue);
+            double b = -1 * pendiente * minValue;
+
             for (int i = 0; i < original.Width; i++)
             {
                 for (int j = 0; j < original.Height; j++)
                 {
                     int pixelValue = original.GetPixel(i, j).R;
-                    double expandedValue = ((double)(pixelValue - minValue) / (double)(maxValue - minValue)) * 255.0;
+ 
+                    double expandedValue = pendiente*pixelValue+b;
                     resultante.SetPixel(i, j, Color.FromArgb((int)expandedValue, (int)expandedValue, (int)expandedValue));
                 }
             }
@@ -105,7 +111,7 @@ namespace TA
             this.Invalidate();
         }
 
-        //Hisograma
+        //Histograma
         private void histogramaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int x = 0; int y = 0;
