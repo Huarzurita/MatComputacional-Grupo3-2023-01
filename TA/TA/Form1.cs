@@ -71,41 +71,53 @@ namespace TA
 
         private void ecualizacionHistogramaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int x = 0; int y = 0;
-            int cOriginalR = 0;
 
-            int suma = 0;
-            int[] sumah = new int[256];
+            resultante = new Bitmap(original.Width, original.Height);
+            int L = 255;
+            int sumaPixelesTotales = 0;
+            int[] sumaPixelesPorNivel = new int[256];
 
-            int tonoR = 0;
-
-            Color miColor;
-
-            double constante = 0;
-
-            for (x = 0; x < 255; x++)
+            for (int i = 0; i < original.Width; i++)
             {
-                suma = suma + histograma[x];
-                sumah[x] = suma;
+                for (int j = 0; j < original.Height; j++)
+                {
+                    sumaPixelesTotales++;
+                    int pixelValue = original.GetPixel(i, j).R;
+                    for (int k = 0; k < sumaPixelesPorNivel.Length; k++)
+                        if (pixelValue == k)
+                        {
+                            sumaPixelesPorNivel[k]++;
+                            break;
+                        }
+
+                }
             }
 
-            constante = (double)(suma) / (double)(original.Width * original.Height);
-
-            for (x = 0; x < original.Width; x++)
+            double[] frPerLevel = new double[256];
+            for (int i = 0; i < frPerLevel.Length; i++)
             {
-                for (y = 0; y < original.Height; y++)
+                frPerLevel[i] = (double)sumaPixelesPorNivel[i] / (double)sumaPixelesTotales;
+            }
+            double SumAcumu = 0;
+            Color newValue;
+            double newTono;
+            for (int i = 0; i < frPerLevel.Length; i++)
+            {
+                SumAcumu += frPerLevel[i];
+                newTono = L * SumAcumu;
+                newValue = Color.FromArgb((int)Math.Round(newTono, 0), (int)Math.Round(newTono, 0), (int)Math.Round(newTono, 0));
+                for (int x = 0; x < original.Width; x++)
                 {
-                    cOriginalR = original.GetPixel(x, y).R;
+                    for (int y = 0; y < original.Height; y++)
+                    {
+                        if (original.GetPixel(x, y).R == i)
+                        {
+                            resultante.SetPixel(x, y, newValue);
+                        }
 
-
-                    tonoR = (int)((double)sumah[cOriginalR] * constante);
-                    if (tonoR > 255) tonoR = 255;
-
-
-
-                    miColor = Color.FromArgb(tonoR, tonoR, tonoR);
-                    resultante.SetPixel(x, y, miColor);
+                    }
                 }
+
             }
 
             this.Invalidate();
